@@ -29,7 +29,9 @@ window.onload = function () {
       gunError = 100;
     } else if (inputGun < 0) {
       gunError = 100;
-    };
+    } else if (!inputGun); {
+      gunError = 100;
+    }
     if (inputHealth === 1) {
       healthRightAdd = 1;
     } else if (inputHealth === 2 || inputHealth === 3 || inputHealth === 4) {
@@ -39,6 +41,8 @@ window.onload = function () {
     } else if (inputHealth > 5) {
       healthError = 100;
     } else if (inputHealth < 0) {
+      healthError = 100;
+    } else if (!inputHealth) {
       healthError = 100;
     };
     if (inputUkraine === 1) {
@@ -50,6 +54,8 @@ window.onload = function () {
     } else if (inputUkraine > 5) {
       ukraineError = 100;
     } else if (inputUkraine < 0) {
+      ukraineError = 100;
+    } else if (!inputUkraine) {
       ukraineError = 100;
     };
   
@@ -69,7 +75,7 @@ window.onload = function () {
   } else if (left > right && left > moderate && left > errorCheck) {
     let resultLeft = document.getElementById('resultLeft');
     resultLeft.removeAttribute('class');
-  } else if (moderate > left && moderate > right && moderate > errorCheck || moderate === left && moderate === right && left === right) {
+  } else if (moderate > left && moderate > right && moderate > errorCheck || moderate === left && moderate === right && left === right && moderate === errorCheck) {
     resultModerate.removeAttribute('class');
   } else if (errorCheck > left) {
     let error = document.getElementById('error');
