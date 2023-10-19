@@ -2,7 +2,6 @@ window.onload = function () {
   form = document.querySelector('form');
   form.onsubmit = function (e) {
     e.preventDefault();
-    console.log("form submitted!");
     let inputGun = parseInt(document.getElementById('inputGun').value);
     let inputHealth = parseInt(document.getElementById('inputHealth').value);
     let inputUkraine = parseInt(document.getElementById('inputUkraine').value);
@@ -58,28 +57,23 @@ window.onload = function () {
     } else if (!inputUkraine) {
       ukraineError = 100;
     };
-  
-  console.log("finished");
 
-  let left = gunLeftAdd + healthLeftAdd + ukraineLeftAdd;
-  let right = gunRightAdd + healthRightAdd + ukraineRightAdd;
-  let moderate = gunModAdd + healthModAdd + ukraineModAdd;
-  let errorCheck = gunError + healthError + ukraineError;
-  console.log(left);
-  console.log(right);
-  console.log(moderate);
-  console.log(errorCheck);
-  if (right > left && right > moderate && right > errorCheck) {
-    let resultRight = document.getElementById('resultRight');
-    resultRight.removeAttribute('class');
-  } else if (left > right && left > moderate && left > errorCheck) {
-    let resultLeft = document.getElementById('resultLeft');
-    resultLeft.removeAttribute('class');
-  } else if (moderate > left && moderate > right && moderate > errorCheck || moderate === left && moderate === right && left === right && moderate === errorCheck) {
-    resultModerate.removeAttribute('class');
-  } else if (errorCheck > left) {
-    let error = document.getElementById('error');
-    error.removeAttribute('class');
+
+    let left = gunLeftAdd + healthLeftAdd + ukraineLeftAdd;
+    let right = gunRightAdd + healthRightAdd + ukraineRightAdd;
+    let moderate = gunModAdd + healthModAdd + ukraineModAdd;
+    let errorCheck = gunError + healthError + ukraineError;
+    if (right > left && right > moderate && right > errorCheck) {
+      let resultRight = document.getElementById('resultRight');
+      resultRight.removeAttribute('class');
+    } else if (left > right && left > moderate && left > errorCheck) {
+      let resultLeft = document.getElementById('resultLeft');
+      resultLeft.removeAttribute('class');
+    } else if (moderate > left && moderate > right && moderate > errorCheck || moderate === left && moderate === right && left === right && moderate === errorCheck) {
+      resultModerate.removeAttribute('class');
+    } else if (errorCheck > left) {
+      let error = document.getElementById('error');
+      error.removeAttribute('class');
+    }
   }
-}
 }
